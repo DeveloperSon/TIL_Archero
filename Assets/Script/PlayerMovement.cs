@@ -25,6 +25,34 @@ public class PlayerMovement : MonoBehaviour
     private static PlayerMovement _instance;
 
     [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private Animator anim;
+
+    const string ANIM_WALK = "WALK";
+    const string ANIM_IDLE = "IDLE";
+    const string ANIM_ATTACK = "ATTACK";
+    const string ANIM_DMG = "DMG";
+        
+    public void PlayAnim_Walk()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(ANIM_WALK))
+            return;
+        
+        anim.SetBool(ANIM_IDLE, false);
+        anim.SetBool(ANIM_ATTACK, false);
+        anim.SetBool(ANIM_WALK, true);
+    }
+
+    public void PlayAnim_Idle()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(ANIM_IDLE))
+            return;
+
+        anim.SetBool(ANIM_WALK, false);
+        anim.SetBool(ANIM_ATTACK, false);
+        anim.SetBool(ANIM_IDLE, true);
+    }
+
+
     public float moveSpd = 25f;
 
 
@@ -36,3 +64,4 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.velocity = new Vector3(moveHor * moveSpd, rigidbody.velocity.y, moveVert * moveSpd);
     }
 }
+
