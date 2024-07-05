@@ -29,8 +29,9 @@ public class JoyStickMovement : MonoBehaviour
     [SerializeField] private Transform smallStick;
     [SerializeField] private Transform bgStick;
     Vector3 stickFirstPosition;
-    private Vector3 joyVec;
+    public Vector3 joyVec;
     float stickRadius;
+    public bool isMoving = false;
 
 
     private void Start()
@@ -49,6 +50,7 @@ public class JoyStickMovement : MonoBehaviour
     {
         ResetUI(Input.mousePosition);
         PlayerMovement.Instance.PlayAnim_Walk();
+        isMoving = true;
     }
 
     public void Drag(BaseEventData baseEventData)
@@ -68,5 +70,6 @@ public class JoyStickMovement : MonoBehaviour
         joyVec = Vector3.zero;
         ResetUI(stickFirstPosition);
         PlayerMovement.Instance.PlayAnim_Idle();
+        isMoving = false;
     }
 }

@@ -58,10 +58,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float moveHor = Input.GetAxis("Horizontal");
-        float moveVert = Input.GetAxis("Vertical");
+        if(JoyStickMovement.Instance.joyVec.x != 0 || JoyStickMovement.Instance.joyVec.y != 0)
+        {
+            rigidbody.velocity = new Vector3(JoyStickMovement.Instance.joyVec.x, 0, JoyStickMovement.Instance.joyVec.y) * moveSpd;
+            rigidbody.rotation = Quaternion.LookRotation(new Vector3(JoyStickMovement.Instance.joyVec.x, 0, JoyStickMovement.Instance.joyVec.y));
+        }
 
-        rigidbody.velocity = new Vector3(moveHor * moveSpd, rigidbody.velocity.y, moveVert * moveSpd);
     }
 }
 
