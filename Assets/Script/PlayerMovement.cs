@@ -75,5 +75,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("NextRoom"))
+        {
+            StageMgr.instance.NextStage();
+        }
+    }
 }
 
