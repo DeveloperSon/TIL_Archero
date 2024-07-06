@@ -52,6 +52,16 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool(ANIM_IDLE, true);
     }
 
+    public void PlayAnim_Atk()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(ANIM_ATTACK))
+            return;
+
+        anim.SetBool(ANIM_WALK, false);
+        anim.SetBool(ANIM_ATTACK, true);
+        anim.SetBool(ANIM_IDLE, false);
+    }
+
 
     public float moveSpd = 25f;
 

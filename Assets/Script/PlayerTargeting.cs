@@ -32,6 +32,9 @@ public class PlayerTargeting : MonoBehaviour
 
     GameObject closeTarget;
     private List<GameObject> listSearchedMonsters = new();
+    [SerializeField] private GameObject goBullet;
+    [SerializeField] private Transform trBulletContainer;
+
 
 
     public void CopyMonsters(ref List<GameObject> listMonsters)
@@ -77,9 +80,15 @@ public class PlayerTargeting : MonoBehaviour
 
     void AtkToTarget()
     {
-        if (!JoyStickMovement.Instance.isMoving)
+        if (closeTarget !=  null && !JoyStickMovement.Instance.isMoving)
         {
-
+            transform.LookAt(closeTarget.transform.position);
+            Instantiate(goBullet, trBulletContainer.position, transform.rotation);
+            PlayerMovement.Instance.PlayAnim_Atk();
+        }
+        else if(JoyStickMovement.Instance.isMoving)
+        {
+            PlayerMovement.Instance.PlayAnim_Walk();
         }
     }
 
