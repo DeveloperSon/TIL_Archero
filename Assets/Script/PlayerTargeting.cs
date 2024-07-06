@@ -78,12 +78,16 @@ public class PlayerTargeting : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        Instantiate(goBullet, trBulletContainer.position, transform.rotation);
+    }
+
     void AtkToTarget()
     {
         if (closeTarget !=  null && !JoyStickMovement.Instance.isMoving)
         {
             transform.LookAt(closeTarget.transform.position);
-            Instantiate(goBullet, trBulletContainer.position, transform.rotation);
             PlayerMovement.Instance.PlayAnim_Atk();
         }
         else if(JoyStickMovement.Instance.isMoving)

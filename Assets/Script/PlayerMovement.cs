@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(ANIM_ATTACK))
             return;
 
+        anim.SetFloat("AttackSpd", 1);
         anim.SetBool(ANIM_WALK, false);
         anim.SetBool(ANIM_ATTACK, true);
         anim.SetBool(ANIM_IDLE, false);

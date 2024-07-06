@@ -17,7 +17,7 @@ public class PlayerWeapon : MonoBehaviour
         // if 없앤 이유 : 충돌 판정 Layer를 설정해 감자는 벽과 몬스터에만 충돌 판정 되도록 설정함.
         Debug.Log("hit : " + target.name);
         rb.velocity = Vector3.zero;
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject, 0.2f);
     }
 
     private void OnTriggerEnter(Collider other)
