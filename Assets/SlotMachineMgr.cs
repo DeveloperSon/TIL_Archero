@@ -62,7 +62,9 @@ public class SlotMachineMgr : MonoBehaviour
     
     IEnumerator StartSlot ( int SlotIndex )
     {
-        for ( int i = 0 ; i < ( ItemCnt * ( 6 + SlotIndex * 4 ) + answer[SlotIndex] ) * 2 ; i++ )
+        int loopCount = (ItemCnt * (6 + SlotIndex * 4) + answer[SlotIndex]) * 2;
+
+        for ( int i = 0 ; i < loopCount; i++ )
         {
             SlotSkillObject[SlotIndex].transform.localPosition -= new Vector3 ( 0, 50f, 0 );
             if ( SlotSkillObject[SlotIndex].transform.localPosition.y < 50f )
